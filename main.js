@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import {openSidebar, closeSidebar} from './sidebar.js';
 
 let scene, camera, renderer, canvas, pointer, textureLoader, raycaster;
 
@@ -57,13 +58,23 @@ const init = () => {
                     getCountry(lat, long).then((countryData)=>{
                         const [country, continent] = countryData;
                         //FIX THIS
-                        if (country == -1 || continent == -1) {
+                        if (country == -1 || continent == -1 || country == undefined || continent == undefined) {
                             console.log("The marked place is not a country!");
+                            //hide sidebar if user clicks random place thats not a country
+                            closeSidebar();
                         }
                         else{
                             console.log("country: " + country);
                             console.log("continent: " + continent);
+                            // Populate the sidebar with country information
+                            const sidebarContent = document.querySelector('.content');
+                            sidebarContent.innerHTML = `<h2>${country}</h2>
+                                                        <p>Continent: ${continent}</p>
+                                                        <!-- Add more information as needed -->`;
+                            openSidebar();    
                         }
+                        
+                        
                     });
                     if (intersections[i].point.x >= 0){
                         root.rotation.x -= Math.PI / 2;

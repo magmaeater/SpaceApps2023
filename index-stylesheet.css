@@ -1,0 +1,19 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px; /* Initially hidden to the left */
+    width: 300px;
+    height: 100%;
+    background-color: #f5f5f5;
+    transition: right 0.3s ease;
+}
+
+.open {
+    left: 0px; /* once this class is added the sidebar appears */
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}

@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>My first three.js app</title>
+		
 		<style>
 		*{
 			margin: 0;
@@ -18,9 +19,19 @@
 			display: block;
 		}
 		</style>
+		<link rel="stylesheet" href="index-stylesheet.css">
 	</head>
 	<body>
-        <canvas class="webgl"></canvas>
+        <canvas class="webgl">
+		</canvas>
+		
+		<div class="sidebar">
+			<button class="close-button">Close</button>
+			<div class="content">
+				
+			</div>
+		</div>
+		
 		<script type="module" src="/main.js"></script>
 	</body>
 </html>
